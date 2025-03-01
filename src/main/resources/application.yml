@@ -1,0 +1,29 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/user?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    username: root
+    password: qwert123456
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  type-aliases-package: com.example.manage.**.domain
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# JWT配置
+jwt:
+  # JWT存储的请求头
+  header: Authorization
+  # JWT加解密使用的密钥
+  secret: mySecret
+  # JWT的超期限时间(60*60*24*7)
+  expiration: 604800
+  # JWT负载中拿到开头
+  tokenHead: Bearer 
